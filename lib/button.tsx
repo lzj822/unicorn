@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const Button = (): JSX.Element => {
     return (
-        <div>Button</div>
+        <div>Button2</div>
     )
 }
 
