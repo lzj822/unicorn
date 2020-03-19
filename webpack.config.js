@@ -4,6 +4,9 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'production',
     entry: "./lib/index.ts",
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx']
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "index.bundle.js"
@@ -16,5 +19,9 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({template: './dist/index.html'})
-    ]
+    ],
+    externals: {
+        react: 'react',
+        'react-dom': 'react-dom'
+    }
 }

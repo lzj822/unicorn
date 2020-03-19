@@ -1,2 +1,5 @@
-let message: string = "hello world";
-console.log(message);
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import Button from './button';
+
+ReactDOM.render(React.createElement(Button), document.body);
