@@ -1,10 +1,10 @@
 {
   "name": "unicorn",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000u\u0000n\u0000i\u0000c\u0000o\u0000r\u0000n\u0000\r\u0000 \u0000",
+  "description": "Unicorn UI",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --config jest.json --watch",
     "start": "cross-env NODE_ENV=developmnet webpack-dev-server --config webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.prod.js"
   },
