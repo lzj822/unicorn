@@ -10,7 +10,7 @@ interface ConfigProviderProps {
     children?: React.ReactNode;
 }
 
-const ConfigContext: React.Context<ConfigConsumerProps | null> = React.createContext({
+const ConfigContext: React.Context<ConfigConsumerProps> = React.createContext({
     getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => {
         if (customizePrefixCls) return customizePrefixCls;
 
