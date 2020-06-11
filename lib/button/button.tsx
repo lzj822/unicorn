@@ -4,22 +4,25 @@ import classNames from 'classnames';
 import { tuple } from '../_util/type';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider/index';
 
-
 const ButtonTypes = tuple('default', 'primary', 'ghost', 'dashed', 'danger', 'link');
 export type ButtonType = typeof ButtonTypes[number];
 
 export interface BaseButtonProps {
-    type?: ButtonType;
+    buttonType?: ButtonType;
     prefixCls?: string;
     className?: string;
 }
 
-const Button: FC<BaseButtonProps> = props => {
+export type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<any>
+
+export type ButtonProps = Partial<NativeButtonProps>;
+
+const Button:FC<ButtonProps> = props => {
 
     const renderButton = ({ getPrefixCls }: ConfigConsumerProps) => {
         const {
             prefixCls: customizePrefixCls,
-            type,
+            buttonType,
             className,
             children
         } = props;
@@ -27,7 +30,7 @@ const Button: FC<BaseButtonProps> = props => {
         const prefixCls = getPrefixCls('btn', customizePrefixCls);
 
         const classes = classNames(prefixCls, className, {
-            [`${prefixCls}-${type}`]: type
+            [`${prefixCls}-${buttonType}`]: buttonType
         })
 
         const buttonNode = (
