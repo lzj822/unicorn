@@ -5,17 +5,21 @@ import { tuple } from '../_util/type';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider/index';
 
 const ButtonTypes = tuple('default', 'primary', 'ghost', 'dashed', 'danger', 'link');
+const ButtonSizes = tuple('small', 'default', 'large');
 export type ButtonType = typeof ButtonTypes[number];
+export type ButtonSize = typeof ButtonSizes[number];
 
 export interface BaseButtonProps {
     buttonType?: ButtonType;
     prefixCls?: string;
     className?: string;
+    size?: ButtonSize;
 }
 
-export type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<any>
+type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
 
-export type ButtonProps = Partial<NativeButtonProps>;
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
 const Button:FC<ButtonProps> = props => {
 
@@ -24,14 +28,38 @@ const Button:FC<ButtonProps> = props => {
             prefixCls: customizePrefixCls,
             buttonType,
             className,
-            children
+            children,
+            size,
+            ...rest
         } = props;
 
         const prefixCls = getPrefixCls('btn', customizePrefixCls);
 
+        let sizeCls = '';
+        switch (size) {
+            case 'large':
+                sizeCls = 'lg';
+                break;
+            case 'small':
+                sizeCls = 'sm';
+                break;
+            default:
+                break;
+        }
+
         const classes = classNames(prefixCls, className, {
-            [`${prefixCls}-${buttonType}`]: buttonType
+            [`${prefixCls}-${buttonType}`]: buttonType,
+            [`${prefixCls}-${sizeCls}`]: sizeCls
         })
+
+        const linkButtonRest = rest as AnchorButtonProps;
+        if (linkButtonRest.href !== undefined) {
+            return (
+                <a {...linkButtonRest} className={classes}>
+                    {children}
+                </a>
+            )
+        }
 
         const buttonNode = (
             <button
