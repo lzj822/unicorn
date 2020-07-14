@@ -1,4 +1,5 @@
 {
     "verbose": true,
-    "setupFilesAfterEnv": ["./tests/setup.ts"]
+    "setupFilesAfterEnv": ["./tests/setup.ts"],
+	"moduleNameMapper": {"\\.(css|scss)$": "identity-obj-proxy"}
 }
