@@ -5,5 +5,9 @@ module.exports = Object.assign({}, base, {
     mode: 'development',
     plugins: [
         new HTMLWebpackPlugin({template: './dist/index.html'})
-    ]
+    ],
+    devServer: {
+       port:9000
+    }
+
 })

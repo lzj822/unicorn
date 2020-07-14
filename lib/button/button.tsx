@@ -3,6 +3,7 @@ import { FC } from 'react';
 import classNames from 'classnames';
 import { tuple } from '../_util/type';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider/index';
+import "./style/index";
 
 const ButtonTypes = tuple('default', 'primary', 'ghost', 'dashed', 'danger', 'link');
 const ButtonSizes = tuple('small', 'default', 'large');

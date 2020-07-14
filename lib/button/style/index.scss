@@ -1,0 +1,72 @@
+@import "../../style/themes/default";
+
+$btn-prefix-cls: ".unicorn-btn";
+
+#{$btn-prefix-cls} {
+    background-color: #ffffff;
+    color: #415364;
+    height: 32px;
+    width: 32px * 2.5;
+    border: 1px solid #415364;
+    border-radius: 3px;
+    font-size: 14px;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover,&:focus {
+        background-color: #F7F7F7;
+        outline: none;
+    }
+
+    &:active {
+        color: #171D24;
+        border: 1px solid #171D24;
+        background-color: #fff;
+    }
+
+    &-primary {
+        color: #fff;
+        background-color: $primary-6;
+        border: none;
+
+        &:hover,&:focus {
+            background-color: $primary-7;
+        }
+
+        &:active {
+            color: #fff;
+            background-color: $primary-8;
+            border: none;
+        }
+    }
+
+    &-danger {
+        color: #fff;
+        background-color: #ed4054;
+        border: none;
+
+        &:hover,&:focus {
+            background-color: #d53a4c;
+        }
+
+        &:active {
+            color: #fff;
+            background-color: #b43140;
+            border: none;
+        }
+    }
+    
+    &-lg {
+        height: 40px;
+        width: 40px * 2.5;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    &-sm {
+        height: 24px;
+        width: 24px * 2.5;
+        border-radius: 2px;
+        font-size: 12px;
+    }
+}
