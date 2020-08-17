@@ -35,6 +35,7 @@ const Button:FC<ButtonProps> = props => {
         } = props;
 
         const prefixCls = getPrefixCls('btn', customizePrefixCls);
+        
 
         let sizeCls = '';
         switch (size) {
@@ -62,9 +63,11 @@ const Button:FC<ButtonProps> = props => {
             )
         }
 
+        const { ...otherProps } = rest as NativeButtonProps;
         const buttonNode = (
             <button
                 className={classes}    
+                {...otherProps}
             >
                 {children}
             </button>
