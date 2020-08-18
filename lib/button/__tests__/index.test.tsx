@@ -1,8 +1,19 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
-import Button  from '../button';
+import Button, { ButtonProps }  from '../button';
 
-test("button test", () => {
+const testProps: ButtonProps = {
+    buttonType: 'primary',
+    size: 'large'
+}
+
+test("test Button Compontent", () => {
     const { container } = render(<Button>button</Button>)
     expect(container).toHaveTextContent("button");
+})
+
+test("render Button Compontent based on different props", () => {
+    const { container, getByText } = render(<Button {...testProps}>button</Button>);
+    expect(container).toBeInTheDocument();
+    expect(getByText('button')).toHaveClass("unicorn-btn-primary unicorn-btn-lg");
 })
