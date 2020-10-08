@@ -11,9 +11,11 @@ addDecorator(storyFn => <div style={{ width: "30vw", display: "flex", justifyCon
 export const button = () => (
     <>
         <Button>Button</Button>
+        <Button buttonType="primary">按 钮</Button>
         <Button buttonType="primary" size="small">Button</Button>
         <Button buttonType="primary" size="large">Button</Button>
         <Button buttonType="primary">Button</Button>
         <Button buttonType="danger">Button</Button>
+        <Button buttonType="link" href="#">link</Button>
     </>
 )

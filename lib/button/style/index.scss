@@ -55,6 +55,12 @@ $btn-prefix-cls: ".unicorn-btn";
             border: none;
         }
     }
+
+    &-link {
+        border: transparent;
+        text-align: center;
+        line-height: 32px;
+    }
     
     &-lg {
         height: 40px;
