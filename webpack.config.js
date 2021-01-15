@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require('path');
 
 module.exports = {
@@ -15,11 +16,11 @@ module.exports = {
             test: /\.tsx?$/,
             use: 'ts-loader'
         }, {
-	    test: /\.s[ac]ss$/i,
-	    use: [
-		 'style-loader',
-		 'css-loader',
-		 'sass-loader'
+        test: /\.s[ac]ss$/i,
+        use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader'
         ]
     }]
     }

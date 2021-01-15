@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { FC, useCallback } from 'react';
+
 
 export interface ConfigConsumerProps {
     rootPrefixCls?: string;
@@ -7,51 +9,119 @@ export interface ConfigConsumerProps {
 
 interface ConfigProviderProps {
     prefixCls?: string;
-    children?: React.ReactNode;
+    // children?: React.ReactNode;
+}
+
+interface ProviderChildrenProps extends ConfigProviderProps {
+    parentContext: ConfigConsumerProps;
+}
+
+const defaultGetPrefixCls = (suffixCls: string, customizePrefixCls?: string) => {
+    if (customizePrefixCls) return customizePrefixCls;
+    return suffixCls ? `unicorn-${suffixCls}` : 'unicorn'
 }
 
 const ConfigContext: React.Context<ConfigConsumerProps> = React.createContext({
-    getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => {
-        if (customizePrefixCls) return customizePrefixCls;
-
-        return `unicorn-${suffixCls}`
-    }
+    getPrefixCls: defaultGetPrefixCls
 })
 
 export const ConfigConsumer = ConfigContext.Consumer;
 
-class ConfigProvider extends React.Component<ConfigProviderProps> {
+const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
+    const {
+        children,
+        parentContext
+    } = props;
 
-    getPrefixCls = (suffixCls: string, customizePrefixCls?: string) => {
-        const { prefixCls = 'unicorn' } = this.props;
+    console.log('123')
 
-        if (customizePrefixCls) return customizePrefixCls;
+    const getPrefixCls = useCallback(
+        (suffixCls: string, customizePrefixCls?: string) => {
+            const { prefixCls } = props;
+    
+            if (customizePrefixCls) return customizePrefixCls;
 
-        return suffixCls? `${prefixCls}-${suffixCls}` : prefixCls;
+            const mergedPrefixCls  = prefixCls || parentContext.getPrefixCls('');
+    
+            return suffixCls ? `${mergedPrefixCls}-${suffixCls}` : mergedPrefixCls;
+        },
+        [parentContext.getPrefixCls],
+    )
+
+    const config = {
+        ...parentContext,
+        getPrefixCls
     }
 
-    renderProvider = (context: ConfigConsumerProps) => {
-        const { children } = this.props;
-
-        const config = {
-            ...context,
-            getPrefixCls: this.getPrefixCls
-        }
-
-        return (
-            <ConfigContext.Provider value={config}>
-                { children }
-            </ConfigContext.Provider>
-        )
-    }
-
-    render() {
-        return (
-            <ConfigConsumer>
-                {this.renderProvider}
-            </ConfigConsumer>
-        )
-    }
+    return (
+        <ConfigContext.Provider value={config}>
+            { children }
+        </ConfigContext.Provider>
+    )
 }
+
+const ConfigProvider: FC<ConfigProviderProps> = props => {
+
+    // const renderProvider = 
+    //     React.useCallback((context: ConfigConsumerProps) => {
+    //         const { children } = props;
+
+    //         console.log(children)
+
+    //         const config = {
+    //             ...context,
+    //             getPrefixCls
+    //         }
+
+    //         return (
+    //             <ConfigContext.Provider value={config}>
+    //                 { children }
+    //             </ConfigContext.Provider>
+    //         )
+    //     },
+    //     [getPrefixCls, props],
+    // )
+
+    return (
+        <ConfigConsumer>
+            {context => <ProviderChildren parentContext={context} {...props} /> }
+        </ConfigConsumer>
+    )
+}
+// class ConfigProvider extends React.Component<ConfigProviderProps> {
+
+//     getPrefixCls = (suffixCls: string, customizePrefixCls?: string) => {
+//         const { prefixCls = 'unicorn' } = this.props;
+
+//         if (customizePrefixCls) return customizePrefixCls;
+
+//         return suffixCls? `${prefixCls}-${suffixCls}` : prefixCls;
+//     }
+
+//     renderProvider = (context: ConfigConsumerProps) => {
+
+//         const { children } = this.props;
+
+//         const config = {
+//             ...context,
+//             getPrefixCls: this.getPrefixCls
+//         }
+
+//         return (
+//             <ConfigContext.Provider value={config}>
+//                 { children }
+//             </ConfigContext.Provider>
+//         )
+//     }
+
+//     render() {
+//         return (
+//             <ConfigConsumer>
+//                 {this.renderProvider}
+//             </ConfigConsumer>
+//         )
+//         // return this.renderProvider
+//     }
+// }
 
 export default ConfigProvider

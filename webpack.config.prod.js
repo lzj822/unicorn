@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const base = require('./webpack.config');
 
 module.exports = Object.assign({}, base, {
