@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FC, useCallback } from 'react';
+import useMemo from '../_util/hook/useMemo';
 
 
 export interface ConfigConsumerProps {
@@ -33,8 +34,6 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
         parentContext
     } = props;
 
-    console.log('123')
-
     const getPrefixCls = useCallback(
         (suffixCls: string, customizePrefixCls?: string) => {
             const { prefixCls } = props;
@@ -48,13 +47,32 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
         [parentContext.getPrefixCls],
     )
 
-    const config = {
-        ...parentContext,
-        getPrefixCls
+    const getConfig = (): ConfigConsumerProps => {
+        const config = {
+            ...parentContext,
+            getPrefixCls
+        }
+
+        return config;
     }
 
+    const config = getConfig();
+
+    const memoedConfig = useMemo(
+        () => config,
+        config,
+        (prevConfig: Record<string, any>, currentConfig) => {
+            const prevKeys = Object.keys(prevConfig);
+            const currentKeys = Object.keys(currentConfig);
+            return (
+                prevKeys.length !== currentKeys.length ||
+                prevKeys.some(key => prevConfig[key] !== currentConfig[key])
+            )
+        }
+    )
+
     return (
-        <ConfigContext.Provider value={config}>
+        <ConfigContext.Provider value={memoedConfig!}>
             { children }
         </ConfigContext.Provider>
     )
