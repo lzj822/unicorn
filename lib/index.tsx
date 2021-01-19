@@ -12,7 +12,9 @@ const Test = () => {
             <li>
                 <Button buttonType="primary" onClick={() => {setValue((val: any) => val + 1)}}>按钮{value}</Button>
             </li>
-            <li></li>
+            <li>
+                <Button buttonType="link" >123456</Button>
+            </li>
             <li>
             <Button size="large">按钮</Button>
             </li>

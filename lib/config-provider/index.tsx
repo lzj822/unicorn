@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import { FC, useCallback } from 'react';
 import useMemo from '../_util/hook/useMemo';
@@ -37,7 +38,6 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
     const getPrefixCls = useCallback(
         (suffixCls: string, customizePrefixCls?: string) => {
             const { prefixCls } = props;
-    
             if (customizePrefixCls) return customizePrefixCls;
 
             const mergedPrefixCls  = prefixCls || parentContext.getPrefixCls('');
@@ -48,12 +48,11 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
     )
 
     const getConfig = (): ConfigConsumerProps => {
-        const config = {
+        const _config = {
             ...parentContext,
             getPrefixCls
         }
-
-        return config;
+        return _config;
     }
 
     const config = getConfig();
