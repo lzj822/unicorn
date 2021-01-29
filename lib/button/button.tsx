@@ -26,8 +26,6 @@ const Button:FC<ButtonProps> = props => {
 
     const renderButton = ({ getPrefixCls }: ConfigConsumerProps) => {
 
-        console.log(getPrefixCls);
-
         const {
             prefixCls: customizePrefixCls,
             buttonType,
