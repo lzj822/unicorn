@@ -22,7 +22,7 @@ type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElemen
 
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
-const Button:FC<ButtonProps> = props => {
+const Button: FC<ButtonProps> = props => {
 
     const renderButton = ({ getPrefixCls }: ConfigConsumerProps) => {
 
@@ -85,6 +85,8 @@ const Button:FC<ButtonProps> = props => {
 }
 
 Button.defaultProps = {
+    buttonType: 'default',
+    size: 'default'
 }
 
 export default Button;

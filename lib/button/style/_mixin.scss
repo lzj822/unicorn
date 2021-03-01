@@ -1,0 +1,8 @@
+@import "../../style/themes/default";
+
+@mixin button-size($height, $padding-horizontal, $font-size, $border-radius) {
+    height: $height;
+    padding: 0 $padding-horizontal; 
+    font-size: $font-size;
+    border-radius: $border-radius;
+}
