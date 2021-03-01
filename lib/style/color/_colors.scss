@@ -1,9 +1,33 @@
-$primary-1: #F1FBFC;
-$primary-2: #CBEEF1;
-$primary-3: #A0DFE5;
-$primary-4: #51C1CB;
-$primary-5: #15A6B3;
-$primary-6: #0099A8;
-$primary-7: #008B97;
-$primary-8: #007580;
-$primary-9: #00565E;
+$primary-1: #F1FBFC !default;
+$primary-2: #CBEEF1 !default;
+$primary-3: #A0DFE5 !default;
+$primary-4: #51C1CB !default;
+$primary-5: #15A6B3 !default;
+$primary-6: #0099A8 !default;
+$primary-7: #008B97 !default;
+$primary-8: #007580 !default;
+$primary-9: #00565E !default;
+
+$white: #FFFFFF !default;
+$foreground-2: #A7B1BD !default;
+$foreground-3: #8D9AA8 !default;
+$foreground-4: #768492 !default;
+$foreground-5: #27313C !default;
+$foreground-6: #4B5968 !default;
+$foreground-7: #394553 !default;
+
+$neutrals-1: #F7F7F7 !default;  // hover
+$neutrals-2: #E6E7E8 !default;  // Line,Tooltip BG
+$neutrals-3: #D4D6D8 !default;  // disable, line
+$neutrals-4: #C2C5C8 !default;  // Disable Light, Description
+$neutrals-5: #415364 !default;  // Secondary (Alt) icon
+$neutrals-6: #171D24 !default;  // Secondary dark
+
+$critical: #ED4054 !default;
+$critical-bg: #FCE0E3 !default;
+$neutral: #41AEE8 !default;
+$neutral-bg: #E0F2FC !default;
+$neutral-border: #B7E1F7 !default;
+$success: #28CC74 !default;
+$warning: #F7A100 !default;
+$warning-bg: #FEF0D6 !default;
