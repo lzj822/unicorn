@@ -1,6 +1,14 @@
 @import '../color/colors';
 
+$btn-height: 32px;
 $btn-height-lg: 40px;
-$btn-padding-horizontal-lg: 15px;
+$btn-height-sm: 24px;
+$btn-padding-horizontal: 15px;
+$btn-padding-horizontal-lg: $btn-padding-horizontal;
+$btn-border-radius: 3px;
 $btn-border-radius-lg: 4px;
+$btn-border-radius-sm: 2px;
+$btn-font-size: 14px;
 $btn-font-size-lg: 16px;
+$btn-font-size-sm: 12px;
+$btn-disabled-opacity: 32%;

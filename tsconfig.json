@@ -8,6 +8,7 @@
         "jsx": "react",
         "allowJs": true,
         "moduleResolution": "node",
+        "skipDefaultLibCheck": true,
         "allowSyntheticDefaultImports": true
     },
     "exclude": [

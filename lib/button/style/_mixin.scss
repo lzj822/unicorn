@@ -6,3 +6,25 @@
     font-size: $font-size;
     border-radius: $border-radius;
 }
+
+@mixin button-style(
+    $color,
+    $background-color,
+    $hover-background,
+    $active-background,
+) {
+    color: $color;
+    background-color: $background-color;
+    border-color: $background-color;
+    &:hover,&:focus {
+        color: $color;
+        background-color: $hover-background;
+        border-color: $hover-background;
+    }
+
+    &:active {
+        color: $color;
+        background-color: $active-background;
+        border-color: $active-background;
+    }
+}

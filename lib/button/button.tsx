@@ -70,7 +70,7 @@ const Button: FC<ButtonProps> = props => {
                 className={classes}    
                 {...otherProps}
             >
-                {children}
+                <span>{children}</span>
             </button>
         )
 

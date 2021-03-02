@@ -1,24 +1,24 @@
 import * as React from 'react';
-// import { useState } from 'react';
+import { useState } from 'react';
 import * as ReactDOM from 'react-dom';
-// import Button from './button/button';
+import Button from './button/button';
 import ConfigProvider from './config-provider';
-import { Icon } from './icon/icon';
+// import { Icon } from './icon/icon';
 
 const Test = () => {
-    // const [value, setValue] = useState(1);
+    const [value, setValue] = useState(1);
 
     return (
         <ul style={{display: 'inline-block'}}>
-            <li><Icon name="cog" /></li>
-            {/* <li>
+            {/* <li><Icon name="cog" /></li> */}
+            <li>
                 <Button buttonType="primary" onClick={() => {setValue((val: any) => val + 1)}}>按钮{value}</Button>
             </li>
             <li>
-                <Button buttonType="link" >123456</Button>
+                <Button buttonType="link">123456</Button>
             </li>
             <li>
-            <Button size="large">按钮</Button>
+            <Button size="large" disabled>按钮</Button>
             </li>
             <li></li>
             <li>
@@ -32,7 +32,7 @@ const Test = () => {
             </li>
             <li>
             <Button buttonType="danger">按钮</Button>
-            </li> */}
+            </li>
         </ul>
     )
 }

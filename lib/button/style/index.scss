@@ -6,13 +6,17 @@ $btn-prefix-cls: ".unicorn-btn";
 #{$btn-prefix-cls} {
     background-color: $white;
     color: $neutrals-5;
-    height: 32px;
-    width: 32px * 2.5;
+    @include button-size($btn-height, $btn-padding-horizontal, $btn-font-size, $btn-border-radius);
     border: 1px solid $neutrals-5;
-    border-radius: 3px;
-    font-size: 14px;
-    padding: 0;
     cursor: pointer;
+
+    &[disabled] {
+        cursor: not-allowed;
+        opacity: $btn-disabled-opacity;
+        > * {
+            pointer-events: none;
+        }
+    }
 
     &:hover,&:focus {
         background-color: #F7F7F7;
@@ -41,21 +45,7 @@ $btn-prefix-cls: ".unicorn-btn";
         }
     }
 
-    &-danger {
-        color: $white;
-        background-color: #ed4054;
-        border: none;
-
-        &:hover,&:focus {
-            background-color: #d53a4c;
-        }
-
-        &:active {
-            color: $white;
-            background-color: #b43140;
-            border: none;
-        }
-    }
+    &-danger { @include button-style($white, #ed4054, #d53a4c, #b43140); }
 
     &-link {
         border: transparent;
@@ -65,10 +55,5 @@ $btn-prefix-cls: ".unicorn-btn";
     
     &-lg { @include button-size($btn-height-lg, $btn-padding-horizontal-lg, $btn-font-size-lg, $btn-border-radius-lg); }
 
-    &-sm {
-        height: 24px;
-        width: 24px * 2.5;
-        border-radius: 2px;
-        font-size: 12px;
-    }
+    &-sm { @include button-size($btn-height-sm, $btn-padding-horizontal, $btn-font-size-sm, $btn-border-radius-sm); }
 }
