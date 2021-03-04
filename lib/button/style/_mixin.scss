@@ -10,21 +10,31 @@
 @mixin button-style(
     $color,
     $background-color,
+    $hover-color: $color,
     $hover-background,
+    $hover-border: $hover-background,
+    $active-color: $color,
     $active-background,
+    $active-border: $active-background,
 ) {
     color: $color;
     background-color: $background-color;
     border-color: $background-color;
     &:hover,&:focus {
-        color: $color;
+        color: $hover-color;
         background-color: $hover-background;
-        border-color: $hover-background;
+        border-color: $hover-border;
     }
 
     &:active {
-        color: $color;
+        color: $active-color;
         background-color: $active-background;
-        border-color: $active-background;
+        border-color: $active-border;
+    }
+
+    &[disabled] {
+        &:hover,&:active,&:focus {
+            background-color: $background-color;
+        }
     }
 }

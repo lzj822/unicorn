@@ -4,11 +4,36 @@
 $btn-prefix-cls: ".unicorn-btn";
 
 #{$btn-prefix-cls} {
-    background-color: $white;
-    color: $neutrals-5;
+    @include button-style(
+        $color: $neutrals-5, 
+        $background-color: $white, 
+        $hover-background: $neutrals-1,
+        $hover-border: $neutrals-5,
+        $active-color: $neutrals-6,
+        $active-background: $white,
+        $active-border: $neutrals-6,
+    );
     @include button-size($btn-height, $btn-padding-horizontal, $btn-font-size, $btn-border-radius);
     border: 1px solid $neutrals-5;
     cursor: pointer;
+
+    &:hover,&:focus {
+        outline: none;
+    }
+
+    &-primary { @include button-style(
+        $color: $white,
+        $background-color: $primary-6,
+        $hover-background: $primary-7,
+        $active-background: $primary-8); 
+    }
+
+    &-danger { @include button-style(
+        $color: $white,
+        $background-color: $critical-6,
+        $hover-background: $critical-7,
+        $active-background: $critical-8); 
+    }
 
     &[disabled] {
         cursor: not-allowed;
@@ -18,42 +43,36 @@ $btn-prefix-cls: ".unicorn-btn";
         }
     }
 
-    &:hover,&:focus {
-        background-color: #F7F7F7;
-        outline: none;
-    }
-
-    &:active {
-        color: #171D24;
-        border: 1px solid #171D24;
-        background-color: $white;
-    }
-
-    &-primary {
-        color: $white;
-        background-color: $primary-6;
-        border: none;
-
-        &:hover,&:focus {
-            background-color: $primary-7;
-        }
-
-        &:active {
-            color: $white;
-            background-color: $primary-8;
-            border: none;
-        }
-    }
-
-    &-danger { @include button-style($white, #ed4054, #d53a4c, #b43140); }
-
     &-link {
         border: transparent;
         text-align: center;
         line-height: 32px;
+
+        &:hover,&:focus,&:active {
+            text-decoration: underline;
+        }
+
+        &:visited {
+            color: $visited;
+        }
+
+        @include button-style(
+            $color: $primary-6,
+            $background-color: transparent,
+            $hover-color: $primary-7,
+            $hover-background: transparent,
+            $active-color: $primary-8,
+            $active-background: transparent
+        );
+
+        &[disabled] {
+            color: $neutrals-4;
+            opacity: 1;
+            text-decoration: none;
+        }
     }
     
     &-lg { @include button-size($btn-height-lg, $btn-padding-horizontal-lg, $btn-font-size-lg, $btn-border-radius-lg); }
 
-    &-sm { @include button-size($btn-height-sm, $btn-padding-horizontal, $btn-font-size-sm, $btn-border-radius-sm); }
+    &-sm { @include button-size($btn-height-sm, $btn-padding-horizontal-sm, $btn-font-size-sm, $btn-border-radius-sm); }
 }

@@ -18,6 +18,18 @@ const Test = () => {
                 <Button buttonType="link">123456</Button>
             </li>
             <li>
+                <Button buttonType="link" size="large">123456</Button>
+            </li>
+            <li>
+                <Button buttonType="link" size="small">123456</Button>
+            </li>
+            <li>
+                <Button buttonType="link">123456</Button>
+            </li>
+            <li>
+                <Button buttonType="link" disabled>123456</Button>
+            </li>
+            <li>
             <Button size="large" disabled>按钮</Button>
             </li>
             <li></li>
@@ -31,7 +43,7 @@ const Test = () => {
             <li>
             </li>
             <li>
-            <Button buttonType="danger">按钮</Button>
+            <Button buttonType="danger" disabled>按钮</Button>
             </li>
         </ul>
     )

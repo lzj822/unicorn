@@ -3,8 +3,9 @@
 $btn-height: 32px;
 $btn-height-lg: 40px;
 $btn-height-sm: 24px;
-$btn-padding-horizontal: 15px;
-$btn-padding-horizontal-lg: $btn-padding-horizontal;
+$btn-padding-horizontal: 17px;
+$btn-padding-horizontal-sm: 11px;
+$btn-padding-horizontal-lg: $btn-padding-horizontal + 1;
 $btn-border-radius: 3px;
 $btn-border-radius-lg: 4px;
 $btn-border-radius-sm: 2px;
